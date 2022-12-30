@@ -14,14 +14,14 @@ const MyTask = () => {
     const imageHostKey=process.env.REACT_APP_imgbb_key;
     const navigate=useNavigate();
     useEffect(()=>{
-        fetch(`http://localhost:5000/mytasks/${user.email}`)
+        fetch(`https://todolist-server-side.vercel.app/mytasks/${user.email}`)
         .then(res=>res.json())
         .then(data=>setMyTasks(data))
     },[])
     
     function completeTask(id){
         console.log(id)
-        fetch(`http://localhost:5000/task/${id}`,{
+        fetch(`https://todolist-server-side.vercel.app/task/${id}`,{
             method:'PUT',
             headers:{
                 'content-type': 'application/json', 
@@ -62,7 +62,7 @@ const MyTask = () => {
                     email:user.email
                 }
                 console.log(task,ld)
-                fetch(`http://localhost:5000/EditTask/${ld}`, {
+                fetch(`https://todolist-server-side.vercel.app/EditTask/${ld}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json', 
@@ -81,7 +81,7 @@ const MyTask = () => {
 
     
     function deleteTask(id){
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://todolist-server-side.vercel.app/task/${id}`, {
             method: 'DELETE', 
             headers:{
                 'content-type': 'application/json', 

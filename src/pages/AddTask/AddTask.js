@@ -31,7 +31,7 @@ const AddTask = () => {
                     email:user.email
                 }
                 console.log(task)
-                fetch('http://localhost:5000/addTask', {
+                fetch('https://todolist-server-side.vercel.app/addTask', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json', 

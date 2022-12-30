@@ -9,7 +9,7 @@ const CompletedTask = () => {
     const [mytasks,setMyTasks]=useState([]);
     const navigate=useNavigate();
     useEffect(()=>{
-        fetch(`http://localhost:5000/mytasks/${user.email}`)
+        fetch(`https://todolist-server-side.vercel.app/mytasks/${user.email}`)
         .then(res=>res.json())
         .then(data=>{
             const filteredData=data.filter(item=>item.status==='0')
@@ -19,7 +19,7 @@ const CompletedTask = () => {
 
     function incompleteTask(id){
         console.log(id)
-        fetch(`http://localhost:5000/IncompleteTask/${id}`,{
+        fetch(`https://todolist-server-side.vercel.app/IncompleteTask/${id}`,{
             method:'PUT',
             headers:{
                 'content-type': 'application/json', 
@@ -39,7 +39,7 @@ const CompletedTask = () => {
         });
     }
     function deleteTask(id){
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://todolist-server-side.vercel.app/task/${id}`, {
             method: 'DELETE', 
             headers:{
                 'content-type': 'application/json', 

@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { router } from './Router/Route.js';
+import { Toaster } from 'react-hot-toast';
+import { RouterProvider } from 'react-router-dom';
+import { createContext, useState } from 'react';
+import Main from './components/Main/Main';
+
+export const UserContext =createContext();
+export const LoadingContext=createContext();
 function App() {
+  const [user,setUser]=useState({})
+  const [loading,setLoading]=useState(false);  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={[user,setUser]}>      
+        <LoadingContext.Provider value={[loading,setLoading]}>
+          <div className="App">
+            <RouterProvider router={router}>
+              <Main></Main>
+            </RouterProvider>
+            <Toaster></Toaster>
+          </div>
+        </LoadingContext.Provider>
+    </UserContext.Provider>
   );
 }
 
